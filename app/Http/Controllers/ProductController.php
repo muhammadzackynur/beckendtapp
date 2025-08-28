@@ -30,11 +30,14 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        // --- PERBAIKAN DI SINI ---
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'price' => 'required|numeric',
             'category' => 'required|string',
+            'warna' => 'required|string|max:100', // Ditambahkan
+            'penyimpanan' => 'required|string|max:100', // Ditambahkan
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -56,6 +59,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+        // Sebaiknya arahkan ke halaman edit saja
         return view('products.edit', compact('product'));
     }
 
@@ -72,11 +76,14 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        // Bagian ini sudah benar dari kode Anda sebelumnya
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'price' => 'required|numeric',
             'category' => 'required|string',
+            'warna' => 'required|string|max:100',
+            'penyimpanan' => 'required|string|max:100',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
