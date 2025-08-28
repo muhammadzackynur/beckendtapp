@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Miscellaneous
 *.class
 *.log
@@ -43,3 +44,23 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+=======
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+.env.production
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+auth.json
+npm-debug.log
+yarn-error.log
+/.fleet
+/.idea
+/.vscode
+>>>>>>> 4ef47bf1b8a2c0ae446ea3c1349081b59b5e5c07
