@@ -19,7 +19,7 @@ class Product extends Model
         'description',
         'price',
         'category',
-        // 'image', // <-- Kolom ini dihapus
+        // 'image', // <-- Kolom ini dihapus karena kita pakai relasi
         'warna',
         'penyimpanan',
     ];
