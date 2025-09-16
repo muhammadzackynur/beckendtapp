@@ -4,20 +4,25 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\CartController; // <-- Tambahkan ini
+use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\CheckoutController;
 use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "api" middleware group. Make something great!
+|
 */
 
 // --- Route Publik (Tidak perlu login) ---
 
 // Route ini sudah mencakup semua fungsionalitas CRUD untuk produk
-// (GET, POST, PUT, DELETE)
 Route::apiResource('products', ProductController::class);
 
 // Route untuk Autentikasi
@@ -39,9 +44,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/cart/item/{productId}', [CartController::class, 'update']);
     Route::delete('/cart/item/{productId}', [CartController::class, 'destroy']);
 
+    // Route untuk Checkout
     Route::post('/checkout', [CheckoutController::class, 'store']);
+    Route::post('/checkout/now', [CheckoutController::class, 'checkoutNow']); // <-- PERBAIKAN: Route "Beli Sekarang" ditambahkan
+
+    // Route untuk Pesanan
     Route::get('/orders', [OrderController::class, 'index']);
 
+    // Route untuk Profil Pengguna
     Route::put('/user/profile-information', [ProfileController::class, 'updateProfile']);
     Route::put('/user/password', [ProfileController::class, 'updatePassword']);
 });

@@ -14,7 +14,7 @@ class OrderController extends Controller
 
         // Ambil pesanan milik user, urutkan dari yang terbaru
         // with('items.product') adalah eager loading untuk performa yang lebih baik
-        $orders = $user->orders()->with('items.product')->latest()->get();
+        $orders = $user->orders()->with('items.product.images')->latest()->get(); 
 
         return response()->json($orders);
     }
